@@ -1,5 +1,7 @@
 package com.recallspringboot.utkarsh.taskManagement.controller;
 
+import com.recallspringboot.utkarsh.taskManagement.dto.TaskRequestDTO;
+import com.recallspringboot.utkarsh.taskManagement.dto.TaskResponseDTO;
 import com.recallspringboot.utkarsh.taskManagement.entity.Tasks;
 import com.recallspringboot.utkarsh.taskManagement.servicesImpl.TaskManagementServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class TaskManagementController {
     TaskManagementServicesImpl taskManagementServices;
 
     @PostMapping("/createTask")
-    public ResponseEntity<Tasks> createTask(Tasks tasks) {
+    public ResponseEntity<TaskResponseDTO> createTask(@RequestBody TaskRequestDTO tasks) {
         return new ResponseEntity<>(taskManagementServices.createTask(tasks), HttpStatus.CREATED);
     }
 

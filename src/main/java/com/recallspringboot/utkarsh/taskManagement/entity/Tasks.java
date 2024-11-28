@@ -1,8 +1,7 @@
 package com.recallspringboot.utkarsh.taskManagement.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.recallspringboot.utkarsh.userManagement.entity.Users;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "Tasks")
 public class Tasks {
     @Id
     @GeneratedValue
@@ -22,6 +22,7 @@ public class Tasks {
     public String description;
     public String priority;
     public String dueDate;
-    public String assignedToUser;
-
+    @ManyToOne
+    @JoinColumn(name = "assigned_to_user_id")
+    public Users assignedToUser;
 }
